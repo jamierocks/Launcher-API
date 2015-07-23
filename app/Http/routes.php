@@ -10,5 +10,3 @@ Route::get('/', function () {
         ), JSON_PRETTY_PRINT)
     )->header('Content-Type', "application/json");
 });
-
-
