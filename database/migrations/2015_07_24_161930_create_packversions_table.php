@@ -13,8 +13,7 @@ class CreatePackversionsTable extends Migration
     public function up()
     {
         Schema::create('packversions', function ($t) {
-            $t->increments('id');
-            $t->integer('packId');
+            $t->integer('pack_id');
             $t->string('version');
             $t->string('minecraftVersion');
             $t->boolean('recommended');

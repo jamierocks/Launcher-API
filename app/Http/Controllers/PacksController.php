@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pack;
+use DateTime;
 use Illuminate\Support\Facades\Response;
 
 class PacksController extends Controller {
@@ -47,12 +48,24 @@ class PacksController extends Controller {
 
         $i = 0;
         foreach (Pack::all() as $item) {
+            $versions = array();
+            $j = 0;
+            foreach ($item->versions as $version) {
+                $dt = new DateTime($version->published);
+                $versions[$j] = array(
+                    "version" => $version->version,
+                    "minecraft" => $version->minecraftVersion,
+                    "published" => $dt->format('U'),
+                    "__LINK" => "" //TODO:
+                );
+                $j++;
+            }
             $data[$i] = array(
                 "id" => $item->id,
                 "name" => $item->name,
                 "safeName" => $item->safeName,
                 "type" => $item->type,
-                "versions" => "", //TODO:
+                "versions" => $versions,
                 "description" => $item->description,
                 "supportURL" => $item->supportURL,
                 "websiteURL" => $item->websiteURL

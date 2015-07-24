@@ -12,4 +12,11 @@ class PackVersion extends Model {
      * @var string
      */
     protected $table = 'packversions';
+
+    /**
+     * Get the pack this version belongs to
+     */
+    public function pack() {
+        return $this->belongsTo('App\Pack');
+    }
 }
