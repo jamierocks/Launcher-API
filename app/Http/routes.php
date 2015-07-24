@@ -1,5 +1,7 @@
 <?php
 
+use App\News;
+
 Route::get('/', function () {
     return Response::make(
         json_encode(array(
@@ -17,6 +19,34 @@ Route::get('/', function () {
 
 // V1
 /////
+
+Route::get('/v1/news', function () {
+    $data = array();
+
+    $i = 0;
+    foreach (News::all() as $item) {
+        if ($i >= 10) {
+            break;
+        }
+        $data[$i] = array(
+            "title" => $item->title,
+            "comments" => $item->comments,
+            "link" => $item->link,
+            "published_at" => $item->published_at,
+            "content" => $item->content
+        );
+        $i++;
+    }
+
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => $data
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
+});
 
 Route::get('/v1/stats/downloads', function () {
     $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
