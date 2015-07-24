@@ -20,6 +20,7 @@ class CreatePacksTable extends Migration
             $t->string('description');
             $t->string('supportURL');
             $t->string('websiteURL');
+            $t->timestamps();
         });
     }
 
