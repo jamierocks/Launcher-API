@@ -1,6 +1,7 @@
 <?php
 
 use App\News;
+use App\Pack;
 
 Route::get('/', function () {
     return Response::make(
@@ -19,6 +20,31 @@ Route::get('/', function () {
 
 // V1
 /////
+
+Route::get('v1/packs/simple', function () {
+    $data = array();
+
+    $i = 0;
+    foreach (Pack::all() as $item) {
+        $data[$i] = array(
+            "id" => $item->id,
+            "name" => $item->name,
+            "safeName" => $item->safeName,
+            "type" => $item->type,
+            "__LINK" => "" // TODO:
+        );
+        $i++;
+    }
+
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => $data
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
+});
 
 Route::get('/v1/news', function () {
     $data = array();
