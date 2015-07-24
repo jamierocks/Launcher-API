@@ -19,6 +19,17 @@ Route::get('/', function () {
 // V1
 /////
 
+// News
+///////
+
+Route::get('/v1/news', 'NewsController@v1News');
+
+// Pack
+///////
+
+Route::get('/v1/pack/{name}', 'PackController@v1Pack');
+Route::get('/v1/pack/{name}/{version}', 'PackController@v1PackVersion');
+
 // Packs
 ////////
 
@@ -27,11 +38,6 @@ Route::get('/v1/packs/full/all', 'PacksController@v1Full');
 Route::get('/v1/packs/full/public', 'PacksController@v1Public');
 Route::get('/v1/packs/full/semipublic', 'PacksController@v1SemiPublic');
 Route::get('/v1/packs/full/private', 'PacksController@v1Private');
-
-// News
-///////
-
-Route::get('/v1/news', 'NewsController@v1News');
 
 // Stats
 ////////
