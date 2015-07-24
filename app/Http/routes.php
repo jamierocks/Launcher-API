@@ -2,6 +2,7 @@
 
 use App\News;
 use App\Pack;
+use App\Stat;
 
 Route::get('/', function () {
     return Response::make(
@@ -76,9 +77,9 @@ Route::get('/v1/news', function () {
 });
 
 Route::get('/v1/stats/downloads', function () {
-    $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
-    $jar = DB::table('stats')->where('key', 'downloads-jar')->value('value');
-    $zip = DB::table('stats')->where('key', 'downloads-zip')->value('value');
+    $exe = Stat::where('key', 'downloads-exe')->value('value');
+    $jar = Stat::where('key', 'downloads-jar')->value('value');
+    $zip = Stat::where('key', 'downloads-zip')->value('value');
     $all = $exe + $jar + $zip;
 
     return Response::make(
@@ -97,9 +98,9 @@ Route::get('/v1/stats/downloads', function () {
 });
 
 Route::get('/v1/stats/downloads/all', function () {
-    $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
-    $jar = DB::table('stats')->where('key', 'downloads-jar')->value('value');
-    $zip = DB::table('stats')->where('key', 'downloads-zip')->value('value');
+    $exe = Stat::where('key', 'downloads-exe')->value('value');
+    $jar = Stat::where('key', 'downloads-jar')->value('value');
+    $zip = Stat::where('key', 'downloads-zip')->value('value');
     $all = $exe + $jar + $zip;
 
     return Response::make(
@@ -113,7 +114,7 @@ Route::get('/v1/stats/downloads/all', function () {
 });
 
 Route::get('/v1/stats/downloads/exe', function () {
-    $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
+    $exe = Stat::where('key', 'downloads-exe')->value('value');
 
     return Response::make(
         json_encode(array(
@@ -126,7 +127,7 @@ Route::get('/v1/stats/downloads/exe', function () {
 });
 
 Route::get('/v1/stats/downloads/jar', function () {
-    $jar = DB::table('stats')->where('key', 'downloads-jar')->value('value');
+    $jar = Stat::where('key', 'downloads-jar')->value('value');
 
     return Response::make(
         json_encode(array(
@@ -139,7 +140,7 @@ Route::get('/v1/stats/downloads/jar', function () {
 });
 
 Route::get('/v1/stats/downloads/zip', function () {
-    $zip = DB::table('stats')->where('key', 'downloads-zip')->value('value');
+    $zip = Stat::where('key', 'downloads-zip')->value('value');
 
     return Response::make(
         json_encode(array(
