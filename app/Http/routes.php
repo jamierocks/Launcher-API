@@ -28,11 +28,12 @@ Route::get('/v1/news', function () {
         if ($i >= 10) {
             break;
         }
+        $dt = new DateTime($item->published_at);
         $data[$i] = array(
             "title" => $item->title,
             "comments" => $item->comments,
             "link" => $item->link,
-            "published_at" => $item->published_at,
+            "published_at" => $dt->format('U'),
             "content" => $item->content
         );
         $i++;
