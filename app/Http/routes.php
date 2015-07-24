@@ -24,6 +24,9 @@ Route::get('/', function () {
 
 Route::get('/v1/packs/simple', 'PacksController@v1Simple');
 Route::get('/v1/packs/full/all', 'PacksController@v1Full');
+Route::get('/v1/packs/full/public', 'PacksController@v1Public');
+Route::get('/v1/packs/full/semipublic', 'PacksController@v1SemiPublic');
+Route::get('/v1/packs/full/private', 'PacksController@v1Private');
 
 // News
 ///////
