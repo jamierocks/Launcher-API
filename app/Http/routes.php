@@ -22,7 +22,8 @@ Route::get('/', function () {
 // Packs
 ////////
 
-Route::get('v1/packs/simple', 'PacksController@v1Simple');
+Route::get('/v1/packs/simple', 'PacksController@v1Simple');
+Route::get('/v1/packs/full/all', 'PacksController@v1Full');
 
 // News
 ///////
