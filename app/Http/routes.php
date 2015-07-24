@@ -18,24 +18,78 @@ Route::get('/', function () {
 // V1
 /////
 
-Route::get('/v1/stats/downloads/', function () {
+Route::get('/v1/stats/downloads', function () {
+    $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
+    $jar = DB::table('stats')->where('key', 'downloads-jar')->value('value');
+    $zip = DB::table('stats')->where('key', 'downloads-zip')->value('value');
+    $all = $exe + $jar + $zip;
 
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => array (
+                "all" => $all,
+                "exe" => $exe,
+                "jar" => $jar,
+                "zip" => $zip
+            )
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
 });
 
-Route::get('/v1/stats/downloads/all/', function () {
+Route::get('/v1/stats/downloads/all', function () {
+    $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
+    $jar = DB::table('stats')->where('key', 'downloads-jar')->value('value');
+    $zip = DB::table('stats')->where('key', 'downloads-zip')->value('value');
+    $all = $exe + $jar + $zip;
 
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => $all
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
 });
 
-Route::get('/v1/stats/downloads/exe/', function () {
+Route::get('/v1/stats/downloads/exe', function () {
+    $exe = DB::table('stats')->where('key', 'downloads-exe')->value('value');
 
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => $exe
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
 });
 
-Route::get('/v1/stats/downloads/zip/', function () {
+Route::get('/v1/stats/downloads/jar', function () {
+    $jar = DB::table('stats')->where('key', 'downloads-jar')->value('value');
 
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => $jar
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
 });
 
-Route::get('/v1/stats/downloads/jar/', function () {
+Route::get('/v1/stats/downloads/zip', function () {
+    $zip = DB::table('stats')->where('key', 'downloads-zip')->value('value');
 
+    return Response::make(
+        json_encode(array(
+            "error" => false,
+            "code" => 200,
+            "message" => null,
+            "data" => $zip
+        ), JSON_PRETTY_PRINT)
+    )->header('Content-Type', "application/json");
 });
-
-
