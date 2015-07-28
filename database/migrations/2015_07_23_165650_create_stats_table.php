@@ -16,6 +16,7 @@ class CreateStatsTable extends Migration
             $t->increments('id');
             $t->string('key', 100);
             $t->integer('value');
+            $t->timestamps();
         });
     }
 

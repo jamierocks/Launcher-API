@@ -19,6 +19,7 @@ class CreateNewsTable extends Migration
             $t->string('link');
             $t->timestamp('published_at');
             $t->text('content');
+            $t->timestamps();
         });
     }
 

@@ -20,6 +20,7 @@ class CreatePackversionsTable extends Migration
             $t->timestamp('published');
             $t->text('serverZipURL');
             $t->text('changelog');
+            $t->timestamps();
         });
     }
 

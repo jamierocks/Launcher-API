@@ -19,6 +19,12 @@ Route::get('/', function () {
 // V1
 /////
 
+// Leaderboards
+///////////////
+
+Route::get('/v1/leaderboards/global', 'LeaderboardsController@v1Global');
+Route::get('/v1/leaderboards/global/{amount}', 'LeaderboardsController@v1GlobalAmount');
+
 // News
 ///////
 

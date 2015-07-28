@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PacksTableSeeder extends Seeder {
 
     /**
-     * Run the database seeds.
+     * Copies over all the packs from the ATLauncher's API into our database.
      *
      * @return void
      */
